@@ -3,12 +3,50 @@
     <ion-title>
       Ionic Blank
     </ion-title>
-  </ion-navbar>
+  </ion-navbar>  
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding>    
+    <!-- <ion-item>
+        <ion-label fixed>Start Time</ion-label>
+        <ion-input type="date" [(ngModle)]="startDate"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label fixed>End Time</ion-label>
+          <ion-input type="date" [(ngModle)]="endDate"></ion-input>
+        </ion-item> -->
+        <ion-row>{{startDate}} - {{endDate}}</ion-row>
+
+
+    <ion-grid text-center>          
+        <ion-row> 
+            <ion-col><div class="day">S</div></ion-col>
+            <ion-col><div class="day">M</div></ion-col>
+            <ion-col><div class="day">T</div></ion-col>
+            <ion-col><div class="day">W</div></ion-col>
+            <ion-col><div class="day">T</div></ion-col>
+            <ion-col><div class="day">F</div></ion-col>
+            <ion-col><div class="day">S</div></ion-col>             
+        </ion-row>      
+      </ion-grid>
+  <ion-grid text-center>   
+    <ion-row>
+        <ion-col>
+          <ion-icon name="arrow-back" (click)="previousMonth()"></ion-icon>
+        </ion-col>
+        <ion-col><div class="day">{{date.format('MMM')}} {{date.format('YYYY')}}</div></ion-col>
+        <ion-col>
+            <ion-icon name="arrow-forward" (click)="nextMonth()"></ion-icon>
+          </ion-col>            
+    </ion-row>
+    <ion-row> 
+        <ion-col *ngFor="let day of daysArr">        
+          <button  class="day"
+           [ngClass]="{'inactive':!day, 'today':todayCheck(day), 'startend':startEndCheck(day),'selected':isSelected(day)}" 
+           [disabled]="beforeToday(day)||isReserved(day)"
+           (click)="selectDate(day)">{{day?.date()}}</button>
+        </ion-col>  
+      </ion-row>      
+  </ion-grid>
 </ion-content>

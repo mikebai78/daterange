@@ -1,3 +1,33 @@
 page-home {
+$grid-columns:               7 !important;
 
+ion-row{
+    min-width: 320px; 
+}
+
+ion-col{
+    justify-content: start;
+    flex-wrap: wrap;
+    min-width: 14.28%;  
+
+}
+.day{         
+    border-radius: 3px;
+
+}
+
+.inactive{
+    opacity: 0.5;
+}
+.today{
+    color: green;
+}
+.startend{
+    background:peru;
+    opacity: 0.7;
+}
+.selected{
+    background:peru;
+    opacity: 0.5;
+}
 }
